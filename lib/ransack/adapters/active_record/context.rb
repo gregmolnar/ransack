@@ -261,7 +261,7 @@ module Ransack
           join_list = join_nodes + convert_join_strings_to_ast(relation.table, string_joins)
 
           if ::ActiveRecord::VERSION::STRING < Constants::RAILS_5_2_0
-            join_dependency = Polyamorous::JoinDependency.new(relation.klass, association_joins, join_list)
+            join_dependency = Polyamorous::JoinDependency.new(relation.klass, association_joins, join_list, '')
             join_nodes.each do |join|
               join_dependency.send(:alias_tracker).aliases[join.left.name.downcase] = 1
             end
